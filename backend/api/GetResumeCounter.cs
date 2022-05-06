@@ -20,8 +20,8 @@ namespace Company.Function
         public static HttpResponseMessage Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
 
-            [CosmosDB(databaseName:"azureResume", collectionName: "counter", ConnectionStringSetting = "AzureResumeConnectionString", Id  = "1", PartitionKey = "1")] Counter counter,
-            [CosmosDB(databaseName:"azureResume", collectionName: "counter", ConnectionStringSetting = "AzureResumeConnectionString", Id  = "1", PartitionKey = "1")] out Counter updatedCounter,
+            [CosmosDB(databaseName:"azureresume", collectionName: "counter", ConnectionStringSetting = "AzureResumeConnectionString", Id  = "1", PartitionKey = "1")] Counter counter,
+            [CosmosDB(databaseName:"azureresume", collectionName: "counter", ConnectionStringSetting = "AzureResumeConnectionString", Id  = "1", PartitionKey = "1")] out Counter updatedCounter,
 
 
             ILogger log)
@@ -30,7 +30,7 @@ namespace Company.Function
 
 
         updatedCounter = counter;
-     
+        updatedCounter.Count += 1;
 
         var jsonToReturn = JsonConvert.SerializeObject(counter);
 
